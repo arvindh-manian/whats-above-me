@@ -2,12 +2,6 @@
     background-image: linear-gradient(to bottom right, #6f42c1, #0d6efd);
 }
 
-.test {
-    border-style: solid;
-    border: yellow;
-    border-width: 1px;
-}
-
 html, body {
     height: 100%;
 }
