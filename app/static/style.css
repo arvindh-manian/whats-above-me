@@ -1,0 +1,16 @@
+.bg-purple {
+    background-image: linear-gradient(to bottom right, #6f42c1, #0d6efd);
+}
+
+.row {
+    padding-bottom: 3rem;
+}
+
+html, body {
+    height: 100%;
+    font-size: 1.25rem;
+}
+
+#body-cards {
+    height: 85%
+}
