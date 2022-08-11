@@ -8,16 +8,19 @@
         {% block styles %}
             {{ bootstrap.load_css() }}
             <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.css">
          {% endblock %}
 
-        <title>Your page title</title>
+        <title>Whatsabove.me | Astronomy Dashboard</title>
         {% endblock %}
     </head>
     <body>
         {% block content %}{% endblock %}
 
         {% block scripts %}
-            <!-- Optional JavaScript -->
+            <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            <script src="{{ url_for('static', filename='scripts.js') }}"></script>
             {{ moment.include_moment() }}
             {{ bootstrap.load_js() }}
         {% endblock %}

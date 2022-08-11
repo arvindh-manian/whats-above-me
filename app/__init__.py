@@ -1,5 +1,4 @@
 from typing import List, Tuple
-from xmlrpc.client import boolean
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap5
 from flask_moment import Moment
@@ -27,7 +26,7 @@ def get_articles() -> List:
 def get_twilight() -> Tuple[datetime, datetime]:
 	return datetime.utcnow(), datetime.utcnow() + timedelta(hours=2)
 
-def eval_stargaze(cloud_cover: int, twilight_start: datetime, twilight_end: datetime) -> boolean:
+def eval_stargaze(cloud_cover: int, twilight_start: datetime, twilight_end: datetime) -> bool:
 	return True
 
 @app.route('/')

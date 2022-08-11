@@ -4,78 +4,79 @@
 {% block content %}
 
 
-  <div class="container-fluid bg-purple">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card bg-dark text-white">
-            <div class="card-body">
-              <h4 class="card-title">Astronomical Conditions ⛈</h4>
-              <p class="card-text">
-                {% if should_stargaze %}
-                You probably <b>can</b> stargaze right now.
-                {% else %}
-                You probably <b>cannot</b> stargaze right now.
-                {% endif %}
-                <ul>
-                  {% if cloud_cover > 30 %}
-                  <li>Visibility is poor, with {{cloud_cover}}% cloud cover</li>
-                  {% else %}
-                  <li>Visibility is good, with {{cloud_cover}}% cloud cover</li>
-                  {% endif %}
-                  <li>The current pressure is around {{ pressure }}</li>
-                  <li>Twilight starts {{ moment(twilight_start).fromNow() }} and ends {{ moment(twilight_end).fromNow() }}</li>
-                </ul>
-                Data is sourced from <a href="https://www.weatherapi.com">WeatherAPI.com</a>, <a href="https://www.cleardarksky.com">ClearDarkSky</a>, and <a href="https://sunrise-sunset.org">Sunrise-Sunset</a>.
-                <br>
-                <br>
-                Even though I didn't use them for this, I'd also like to bring attention to <a href="https://www.lightpollutionmap.info/">Light Pollution Map</a> by Jurij Stare (using light pollution data from Falchi et al.) and <a href="http://www.worldwidetelescope.org/home/">World Wide Telescope</a>.
-            </p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-sm-6">
-          <div class="card bg-dark text-white">
-            <div class="card-body">
-              <h4 class="card-title">Space News 🚀</h4>
-              <div class="list-group list-group-flush bg-light text-dark" id="news-list">
-                {% for article in articles %}
-                  <a href="{{ article.url }}" class="news-article list-group-item">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h6 class="list-group-item-heading news-title">{{ article.title }}</h6>
-                    <small class="text-dark news-timestamp">{{ moment(article.updatedAt).fromNow() }}</small>
-                  </div>
-                  <p class="list-group-item-text news-summary">{{ article.newsSite.upper() }} - {{ article.summary }}</p>
-                </a>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
+<div class="container-fluid bg-purple">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card bg-dark text-white">
+        <div class="card-body">
+          <h4 class="card-title">Astronomical Conditions ⛈</h4>
+          <p class="card-text">
+            {% if should_stargaze %}
+            You probably <b>can</b> stargaze right now.
+            {% else %}
+            You probably <b>cannot</b> stargaze right now.
+            {% endif %}
+            <ul>
+              {% if cloud_cover > 30 %}
+              <li>Visibility is poor, with {{cloud_cover}}% cloud cover</li>
+              {% else %}
+              <li>Visibility is good, with {{cloud_cover}}% cloud cover</li>
+              {% endif %}
+              <li>The current pressure is around {{ pressure }}</li>
+              <li>Twilight starts {{ moment(twilight_start).fromNow() }} and ends {{ moment(twilight_end).fromNow() }}</li>
+            </ul>
+            Data is sourced from <a href="https://www.weatherapi.com">WeatherAPI.com</a>, <a href="https://www.cleardarksky.com">ClearDarkSky</a>, and <a href="https://sunrise-sunset.org">Sunrise-Sunset</a>.
+            <br>
+            <br>
+            Even though I didn't use them for this, I'd also like to bring attention to <a href="https://www.lightpollutionmap.info/">Light Pollution Map</a> by Jurij Stare (using light pollution data from Falchi et al.) and <a href="http://www.worldwidetelescope.org/home/">World Wide Telescope</a>.
+          </p>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card bg-dark text-white">
-            <div class="card-body">
-              <h4 class="card-title">Astronomical Events 🔭</h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card bg-dark text-white">
-            <div class="card-body">
-              <h4 class="card-title">Light Pollution Info ✨</h4>
-            </div>
-          </div>
+      
+    </div>
+    <div class="col-sm-6">
+      <div class="card bg-dark text-white">
+        <div class="card-body">
+          <h4 class="card-title">Space News 🚀</h4>
+          <div class="list-group list-group-flush bg-light text-dark" id="news-list">
+            {% for article in articles %}
+            <a href="{{ article.url }}" class="news-article list-group-item">
+              <div class="d-flex w-100 justify-content-between">
+                <h6 class="list-group-item-heading news-title">{{ article.title }}</h6>
+                <small class="text-dark news-timestamp">{{ moment(article.updatedAt).fromNow() }}</small>
+              </div>
+              <p class="list-group-item-text news-summary">{{ article.newsSite.upper() }} - {{ article.summary }}</p>
+            </a>
+            {% endfor %}
+          </ul>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12 footer bg-dark">
-        <p class="text-muted">Made with ♥ by Arvindh Manian</p>
-      </div>
   </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card bg-dark text-white">
+      <div class="card-body">
+        <h4 class="card-title">Astronomical Events 🔭</h4>
+        <div id="calendar" class="card-text"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card bg-dark text-white">
+      <div class="card-body">
+        <h4 class="card-title">Light Pollution Info ✨</h4>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="row">
+  <div class="col-xs-12 footer bg-dark">
+    <p class="text-muted">Made with ♥ by Arvindh Manian</p>
+  </div>
+</div>
 
-        
+
 {% endblock %}
